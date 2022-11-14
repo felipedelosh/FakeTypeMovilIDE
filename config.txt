@@ -1,0 +1,4 @@
+_max_x=540
+_max_y=700
+fake_program_title=FelipedelosHv1.2.py
+velocity_of_type=100

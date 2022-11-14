@@ -1,0 +1,15 @@
+for i in range:
+    lokooooo()
+
+print("Epaaaa")
+
+
+
+print("Epaaaa")
+
+
+
+print("OPAAAA")
+
+
+print("This is a fake Typed")
