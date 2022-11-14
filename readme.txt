@@ -1,4 +1,4 @@
-![IMG](https://raw.githubusercontent.com/felipedelosh/FakeTypeMovilIDE/main/evidence/demo.png)
+
 FelipedelosH
 2022
 v1.0
