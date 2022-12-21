@@ -25,6 +25,8 @@ class Software:
         self.counter_type_line = 0 # What line the program write currently
         self.counter_letter_type = 0 # What letter need insert in screem
         self.counter_currenty_type_pos_x = 1 # The pos x to insert letter
+        self.todoLine = "#FelipedelosH Write TODO program here........................."
+        self.showTodoLine = True
         self._setConfiguration()
 
         
@@ -65,27 +67,44 @@ class Software:
 
 
     def typePrgram(self):
-        
-        if self.counter_letter_type < len(self.fake_program_code)-1:
-            chr_to_type = self.fake_program_code[self.counter_letter_type]
-            
-            if chr_to_type == "\n":
-                self.counter_type_line = self.counter_type_line + 1
-                self.counter_currenty_type_pos_x = 0
-                
-            
-            if chr_to_type != "\n":
+        if self.showTodoLine:  # This is the todo line
+            if self.counter_letter_type < len(self.todoLine)-1:
+                chr_to_type = self.todoLine[self.counter_letter_type]
                 _xk = (self._max_x * 0.07) + (self.counter_currenty_type_pos_x*8)
                 _yk = (self._max_y * 0.08) + (self.counter_type_line * 20) + 20
-                self.canvas.create_text(_xk, _yk, text=chr_to_type, fill="white")
+                self.canvas.create_text(_xk, _yk, text=chr_to_type, fill="white", tags="todoLine")
+            else: # reset counters
+                chr_to_type = ""
+                self.counter_letter_type = -1 # becons the counter Adding 1
+                self.showTodoLine = False
+                self.counter_currenty_type_pos_x = 0
+                self.canvas.delete("todoLine")
 
             self.counter_letter_type = self.counter_letter_type + 1
             self.counter_currenty_type_pos_x = self.counter_currenty_type_pos_x + 1
+        else: # After todo line show the program
+            if self.counter_letter_type < len(self.fake_program_code)-1:
+                chr_to_type = self.fake_program_code[self.counter_letter_type]
+                
+                if chr_to_type == "\n":
+                    self.counter_type_line = self.counter_type_line + 1
+                    self.counter_currenty_type_pos_x = 0
+                    
+                
+                if chr_to_type != "\n":
+                    _xk = (self._max_x * 0.07) + (self.counter_currenty_type_pos_x*8)
+                    _yk = (self._max_y * 0.08) + (self.counter_type_line * 20) + 20
+                    self.canvas.create_text(_xk, _yk, text=chr_to_type, fill="white")
+
+                self.counter_letter_type = self.counter_letter_type + 1
+                self.counter_currenty_type_pos_x = self.counter_currenty_type_pos_x + 1
             
 
 
         self.screem.after(self.velocity_of_type, self.typePrgram)
 
+    def _typeTodoLine(self):
+        pass
 
 
     def openProgram(self):
